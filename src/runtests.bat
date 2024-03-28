@@ -47,3 +47,5 @@ java Program ../samples/succ_13.minc   > ../samples/output_succ_13.txt
 java Program ../samples/succ_14.minc   > ../samples/output_succ_14.txt
 java Program ../samples/succ_15.minc   > ../samples/output_succ_15.txt
 java Program ../samples/succ_16.minc   > ../samples/output_succ_16.txt
+
+PAUSE

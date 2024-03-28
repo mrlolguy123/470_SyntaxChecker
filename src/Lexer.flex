@@ -1,3 +1,7 @@
+/* Danny Le
+ * Andrew Miller
+ */
+
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * Copyright (C) 2000 Gerwin Klein <lsf@jflex.de>                          *
  * All rights reserved.                                                    *
@@ -18,15 +22,20 @@
 %{
 
   public Parser   parser;
-  public int      lineno;
-  public int      column;
 
   public Lexer(java.io.Reader r, Parser parser) {
     this(r);
     this.parser = parser;
-    this.lineno = 1;
-    this.column = 1;
   }
+
+  public int getYyline() {
+        return yyline;
+    }
+
+    public int getYycolumn() {
+        return yycolumn;
+    }
+
 %}
 
 num          = [0-9]+("."[0-9]+)?

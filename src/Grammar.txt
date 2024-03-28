@@ -194,7 +194,7 @@ compound_stmt -> BEGIN local_decls stmt_list END
        factor -> IDENT factor'
                | LPAREN expr RPAREN
                | NUM_LIT
-               | BOOL_LIT
+               | BO[OL_LIT
                | NEW prim_type LBRACKET expr RBRACKET
 
       factor' -> LPAREN args RPAREN

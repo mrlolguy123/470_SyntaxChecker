@@ -1,3 +1,6 @@
+// Danny Le
+// Andrew Miller
+
 import java.util.List;
 import java.util.ArrayList;
 
@@ -111,16 +114,38 @@ public class Parser
         }
     }
     //////////////////////////////////////////////////////////////////////////////////////////////////////
-    //      program -> decl_list
-    //    decl_list -> decl_list'
-    //   decl_list' -> fun_decl decl_list'  |  eps
-    //     fun_decl -> FUNC IDENT TYPEOF prim_type LPAREN params RPAREN BEGIN local_decls stmt_list END
-    //    prim_type -> NUM
-    //       params -> eps
-    //  local_decls -> local_decls'
-    // local_decls' -> eps
-    //    stmt_list -> stmt_list'
-    //   stmt_list' -> eps
+    // program -> decl_list
+    // decl_list -> decl_list'
+    // decl_list' -> fun_decl decl_list' | ϵ
+    // fun_decl -> FUNC IDENT TYPEOF prim_type LPAREN params RPAREN BEGIN local_decls stmt_list END
+    // params -> param_list | ϵ
+    // param_list -> param param_list'
+    // param_list' -> COMMA param param_list' | ϵ
+    // param -> IDENT TYPEOF type_spec
+    // type_spec -> prim_type type_spec'
+    // type_spec' -> LBRACKET RBRACKET | ϵ
+    // prim_type -> NUM | BOOL | VOID
+    // local_decls -> local_decls'
+    // local_decls' -> local_decl local_decls' | ϵ
+    // local_decl -> VAR IDENT TYPEOF type_spec SEMI
+    // stmt_list -> stmt_list'
+    // stmt_list' -> stmt stmt_list' | ϵ
+    // stmt -> assign_stmt | print_stmt | return_stmt | if_stmt | while_stmt | compound_stmt
+    // assign_stmt -> IDENT ASSIGN expr SEMI
+    // print_stmt -> PRINT expr SEMI
+    // return_stmt -> RETURN expr SEMI
+    // if_stmt -> IF LPAREN expr RPAREN THEN stmt_list ELSE stmt_list END
+    // while_stmt -> WHILE LPAREN expr RPAREN BEGIN stmt_list END
+    // compound_stmt -> BEGIN local_decls stmt_list END
+    // args -> arg_list | ϵ
+    // arg_list -> expr arg_list'
+    // arg_list' -> COMMA expr arg_list' | ϵ
+    // expr -> term expr'
+    // expr' -> EXPROP term expr' | RELOP term expr' | ϵ
+    // term -> factor term'
+    // term' -> TERMOP factor term' | ϵ
+    // factor -> IDENT factor' | LPAREN expr RPAREN | NUM_LIT | BOOL_LIT | NEW prim_type LBRACKET expr RBRACKET
+    // factor' -> LPAREN args RPAREN | LBRACKET expr RBRACKET | DOT SIZE | ϵ
     //////////////////////////////////////////////////////////////////////////////////////////////////////
 
     public ParseTree.Program program() throws Exception
