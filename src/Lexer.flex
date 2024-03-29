@@ -67,7 +67,7 @@ blockcomment = "/*"[^]*"*/"
 ")"                                 { parser.yylval = new ParserVal((Object)yytext()); return Parser.RPAREN     ; }
 "["                                 { parser.yylval = new ParserVal((Object)yytext()); return Parser.LBRACKET   ; }
 "]"                                 { parser.yylval = new ParserVal((Object)yytext()); return Parser.RBRACKET   ; }
-"="                                 { parser.yylval = new ParserVal((Object)yytext()); return Parser.ASSIGN     ; }
+"<"|">"|"<="|">="|"="|"<>"          { parser.yylval = new ParserVal((Object)yytext()); return Parser.RELOP      ; }
 "+"|"-"|"or"                        { parser.yylval = new ParserVal((Object)yytext()); return Parser.EXPROP     ; }
 "*"|"/"|"and"                       { parser.yylval = new ParserVal((Object)yytext()); return Parser.TERMOP     ; }
 "::"                                { parser.yylval = new ParserVal((Object)yytext()); return Parser.TYPEOF     ; }
@@ -75,7 +75,6 @@ blockcomment = "/*"[^]*"*/"
 ","                                 { parser.yylval = new ParserVal((Object)yytext()); return Parser.COMMA      ; }
 "."                                 { parser.yylval = new ParserVal((Object)yytext()); return Parser.DOT        ; }
 ":="                                { parser.yylval = new ParserVal((Object)yytext()); return Parser.ASSIGN     ; }
-"<"|">"|"<="|"<="|"="|"<>"          { parser.yylval = new ParserVal((Object)yytext()); return Parser.RELOP      ; }
 "true"|"false"                      { parser.yylval = new ParserVal((Object)yytext()); return Parser.BOOL_LIT   ; }
 {num}                               { parser.yylval = new ParserVal((Object)yytext()); return Parser.NUM_LIT    ; }
 {identifier}                        { parser.yylval = new ParserVal((Object)yytext()); return Parser.IDENT      ; }

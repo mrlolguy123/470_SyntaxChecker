@@ -90,13 +90,87 @@ public class Parser
         String lexeme = "";
         if (_token.attr != null) lexeme = (String) _token.attr.obj;
 
-        if (match == false)                          // if token does not match
-            throw new Exception("token mismatch");  // throw exception (indicating parsing error in this assignment)
+        if (!match)             {             // if token does not match
+            String line = String.valueOf(_lexer.getYyline());
+            String col = String.valueOf(_lexer.getYycolumn());
+            throw new Exception("\"" + tokenToString(token_type) + "\" is expected instead of \"" + lexeme + "\" at " + line + ":" + col + ".");  // throw exception (indicating parsing error in this assignment)
+        }
 
         if (_token.type != ENDMARKER)    // if token is not endmarker,
             Advance();                  // make token point next token in input by calling Advance()
 
         return lexeme;
+    }
+
+    public String tokenToString(int token_type){
+        switch(token_type) {
+            case ENDMARKER:
+                return "$";
+            case LEXERROR:
+                return "";
+            case FUNC:
+                return "func";
+            case VAR:
+                return "var";
+            case BEGIN:
+                return "begin";
+            case END:
+                return "end";
+            case RETURN:
+                return "return";
+            case PRINT:
+                return "print";
+            case IF:
+                return "if";
+            case THEN:
+                return "then";
+            case ELSE:
+                return "else";
+            case WHILE:
+                return "while";
+            case VOID:
+                return "void";
+            case NUM:
+                return "num";
+            case BOOL:
+                return "bool";
+            case NEW:
+                return "new";
+            case SIZE:
+                return "size";
+            case LPAREN:
+                return "(";
+            case RPAREN:
+                return ")";
+            case LBRACKET:
+                return "[";
+            case RBRACKET:
+                return "]";
+            case ASSIGN:
+                return ":=";
+            case TYPEOF:
+                return "::";
+            case SEMI:
+                return ";";
+            case COMMA:
+                return ",";
+            case DOT:
+                return ".";
+            case RELOP:
+                return "<,>,<=,>=,=, or <>";
+            case TERMOP:
+                return "*,/, or \"and\"";
+            case EXPROP:
+                return "+,-, or \"or\"";
+            case BOOL_LIT:
+                return "boolean";
+            case NUM_LIT:
+                return "number";
+            case IDENT:
+                return "identifier";
+            default:
+                return null;
+        }
     }
 
     public int yyparse() throws Exception
