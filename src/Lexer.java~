@@ -324,11 +324,11 @@ class Lexer {
   }
 
   public int getYyline() {
-        return yyline;
+        return yyline+1;
     }
 
     public int getYycolumn() {
-        return yycolumn;
+        return yycolumn+1;
     }
 
 

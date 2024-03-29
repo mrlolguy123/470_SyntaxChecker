@@ -185,7 +185,7 @@ public class Parser
             case ENDMARKER:
                 return new ArrayList<ParseTree.FuncDecl>();
         }
-        throw new Exception("No matching production in decl_list_ at " + _lexer.getYyline() + ":" + _lexer.getYycolumn());
+        throw new Exception("No matching production in decl_list' at " + _lexer.getYyline() + ":" + _lexer.getYycolumn());
     }
     public ParseTree.FuncDecl fun_decl() throws Exception
     {
@@ -273,7 +273,7 @@ public class Parser
             case RPAREN:
                 return new ArrayList<ParseTree.Param>();
         }
-        throw new Exception("No matching production in param_list_ at " + _lexer.getYyline() + ":" + _lexer.getYycolumn());
+        throw new Exception("No matching production in param_list' at " + _lexer.getYyline() + ":" + _lexer.getYycolumn());
     }
 
     public ParseTree.Param param() throws Exception
@@ -320,7 +320,7 @@ public class Parser
             case SEMI:
                 return new ParseTree.TypeSpec_Value();
         }
-        throw new Exception("No matching production in type_spec_ at " + _lexer.getYyline() + ":" + _lexer.getYycolumn());
+        throw new Exception("No matching production in type_spec' at " + _lexer.getYyline() + ":" + _lexer.getYycolumn());
     }
 
     public List<ParseTree.LocalDecl> local_decls() throws Exception
@@ -368,7 +368,7 @@ public class Parser
             case ENDMARKER:
                 return new ArrayList<ParseTree.LocalDecl>();
         }
-        throw new Exception("No matching production in local_decls_ at " + _lexer.getYyline() + ":" + _lexer.getYycolumn());
+        throw new Exception("No matching production in local_decls' at " + _lexer.getYyline() + ":" + _lexer.getYycolumn());
     }
 
     public ParseTree.LocalDecl local_decl() throws Exception
@@ -422,7 +422,7 @@ public class Parser
             case ELSE:
                 return new ArrayList<ParseTree.Stmt>();
         }
-        throw new Exception("No matching production in stmt_list_ at " + _lexer.getYyline() + ":" + _lexer.getYycolumn());
+        throw new Exception("No matching production in stmt_list' at " + _lexer.getYyline() + ":" + _lexer.getYycolumn());
     }
 
     public ParseTree.Stmt stmt() throws Exception
@@ -613,7 +613,7 @@ public class Parser
             case SEMI:
                 return null;
         }
-        throw new Exception("No matching production in term_ at " + _lexer.getYyline() + ":" + _lexer.getYycolumn());
+        throw new Exception("No matching production in term' at " + _lexer.getYyline() + ":" + _lexer.getYycolumn());
     }
 
     public ParseTree.Factor factor() throws Exception
@@ -645,7 +645,7 @@ public class Parser
                 return new ParseTree.FactorNew(v9, v11);
 
         }
-        throw new Exception("No matching production in term_ at " + _lexer.getYyline() + ":" + _lexer.getYycolumn());
+        throw new Exception("No matching production in factor at " + _lexer.getYyline() + ":" + _lexer.getYycolumn());
     }
 
     private ParseTree.Factor_ factor_() throws Exception {
@@ -675,7 +675,7 @@ public class Parser
             case SEMI:
                 return new ParseTree.FactorIdent_Eps();
         }
-        throw new Exception("No matching production in factor_ at " + _lexer.getYyline() + ":" + _lexer.getYycolumn());
+        throw new Exception("No matching production in factor' at " + _lexer.getYyline() + ":" + _lexer.getYycolumn());
     }
 
     public List<ParseTree.Arg> args() throws Exception
@@ -727,7 +727,7 @@ public class Parser
             case RPAREN:
                 return new ArrayList<ParseTree.Arg>();
         }
-        throw new Exception("No matching production in arg_list_ at " + _lexer.getYyline() + ":" + _lexer.getYycolumn());
+        throw new Exception("No matching production in arg_list' at " + _lexer.getYyline() + ":" + _lexer.getYycolumn());
     }
 
 }
