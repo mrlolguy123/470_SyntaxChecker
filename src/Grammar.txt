@@ -238,3 +238,27 @@ compound_stmt   returns         ParseTree.StmtCompound
        factor   returns         ParseTree.Factor        (FactorIdentExt        or  FactorParen            or  FactorNumLit         or  FactorBoolLit    or  FactorNew)
                                                         (where in the above FactorIdentExt is for "factor -> IDENT factor'"                                          )
       factor'   returns         ParseTree.Factor_       (FactorIdent_ParenArgs or  FactorIdent_BrackExpr  or  FactorIdent_DotSize  or  FactorIdent_Eps)
+
+FROM THE CMPSC470 WEBSITE, MORE RETURN TYPE HINTS BELOW:
+* Note regarding return type of some productions
+    * expr -> term expr'                                    returns ParseTree.Expr
+
+    * expr' -> EXPROP term expr'                            returns ParseTree.Expr_
+    * expr' -> RELOP term expr'                             returns ParseTree.Expr_
+    * expr' -> epsilon                                      returns null
+
+    * term -> factor term'                                  returns ParseTree.Term
+
+    * term' -> TERMOP factor term'                          returns ParseTree.Term_
+    * term' -> epsilon                                      returns null
+
+    * factor -> IDENT factor'                               returns ParseTree.FactorIdentExt
+    * factor -> LPAREN expr RPAREN                          returns ParseTree.FactorParen
+    * factor -> NUM_LIT                                     returns ParseTree.FactorNumLit
+    * factor -> BOOL_LIT                                    returns ParseTree.FactorBoolLit
+    * factor -> NEW prim_type LBRACKET expr RBRACKET        returns ParseTree.FactorNew
+
+    * factor' -> LPAREN args RPAREN                         returns ParseTree.FactorIdent_ParenArgs
+    * factor' -> LBRACKET expr RBRACKET                     returns ParseTree.FactorIdent_BrackExpr
+    * factor' -> DOT SIZE                                   returns ParseTree.FactorIdent_DotSize
+    * factor' -> epsilon                                    returns ParseTree.FactorIdent_Eps
